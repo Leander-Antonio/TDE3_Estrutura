@@ -4,74 +4,75 @@ Este projeto tem como objetivo realizar uma análise comparativa de desempenho e
 
 ## Algoritmos Analisados
 
-- **Insert Sort**: Algoritmo simples e eficiente para listas pequenas. Ele percorre o vetor da esquerda para a direita, inserindo cada elemento na posição correta do subvetor ordenado à esquerda.
-- **Quick Sort**: Algoritmo eficiente baseado no paradigma de divisão e conquista. Escolhe um pivô e organiza os elementos menores à esquerda e os maiores à direita, aplicando recursivamente nas subpartições.
-- **Merge Sort**: Outro algoritmo baseado em divisão e conquista. Divide o vetor em partes menores, ordena cada uma recursivamente e depois mescla os resultados de forma ordenada.
-- **Gnome Sort**: Similar ao Insert Sort, mas com uma abordagem de "avanço e recuo": o algoritmo compara elementos adjacentes e troca se estiverem fora de ordem, recuando se necessário.
+- **Insert Sort**: Algoritmo simples e eficiente para listas pequenas. Percorre o vetor da esquerda para a direita, inserindo cada elemento na posição correta do subvetor ordenado à esquerda.
+
+- **Quick Sort**: Algoritmo eficiente baseado no paradigma de divisão e conquista. Escolhe um pivô e organiza os elementos menores à esquerda e os maiores à direita, aplicando-se recursivamente às subpartições.
+
+- **Merge Sort**: Também baseado em divisão e conquista. Divide o vetor em partes menores, ordena recursivamente e, em seguida, mescla os resultados de forma ordenada.
+
+- **Gnome Sort**: Similar ao Insert Sort, mas com uma abordagem de "avanço e recuo": compara elementos adjacentes e troca se necessário, recuando sempre que um elemento estiver fora de ordem.
 
 ## Objetivo
 
-O principal objetivo é comparar o desempenho dos algoritmos com base em três métricas:
-- **Tempo de execução (em milissegundos)**
-- **Número de trocas realizadas**
-- **Número de iterações ou comparações efetuadas**
+Comparar o desempenho dos algoritmos com base em três métricas principais:
+
+- Tempo de execução (em milissegundos)
+- Número de trocas realizadas
+- Número de iterações ou comparações efetuadas
 
 ## Metodologia
 
-Para uma avaliação justa e detalhada:
-- Foram utilizados vetores de tamanhos variados: `1000`, `10000`, `100000`, `500000`.
-- Cada experimento foi repetido com 5 sementes diferentes: `42`, `99`, `123`, `2024`, `777`.
-- Os dados foram salvos em um arquivo `resultados.csv` para posterior análise.
+Para garantir uma análise justa e abrangente:
 
-Um script em Python foi usado para ler o arquivo CSV e gerar os gráficos de comparação.
+- Foram utilizados vetores de tamanhos variados: `1000`, `10000`, `100000`, `500000`, `1000000`.
+- Cada experimento foi executado com 5 seeds diferentes: `42`, `99`, `123`, `2024`, `777`.
+- Os dados gerados foram salvos em um arquivo `resultados.csv`.
+- Um script em Python foi utilizado para processar esses dados e gerar os gráficos comparativos.
 
 ## Gráficos Gerados
 
 ### Comparação do Tempo de Execução
 
-![Tempo de Execução](Gráficos/comparacao_tempo.png)
+![Tempo de Execução](Graficos/comparacao_tempo.png)
 
-Este gráfico compara o tempo de execução médio dos algoritmos para diferentes tamanhos de entrada.
+Este gráfico compara o tempo médio de execução dos algoritmos para diferentes tamanhos de vetor.
 
 **Análise**:
-- O **Insert Sort** e o **Gnome Sort** apresentaram um crescimento exponencial no tempo de execução à medida que o tamanho do vetor aumentou, evidenciando a ineficiência para grandes volumes de dados.
-- O **Quick Sort** foi o mais rápido na maioria dos cenários, com tempos quase constantes mesmo em grandes conjuntos.
-- O **Merge Sort** também manteve boa performance, sendo ligeiramente mais lento que o Quick Sort.
-
----
+- Insert Sort e Gnome Sort apresentaram crescimento exponencial no tempo conforme o vetor aumenta, evidenciando baixa escalabilidade.
+- Quick Sort foi o mais rápido na maioria dos testes, com excelente desempenho mesmo em vetores grandes.
+- Merge Sort também manteve boa performance, com leve aumento no tempo em vetores maiores, mas ainda eficiente.
 
 ### Comparação do Número de Trocas
 
-![Número de Trocas](Gráficos/comparacao_trocas.png)
+![Número de Trocas](Graficos/comparacao_trocas.png)
 
 Este gráfico mostra a média de trocas de elementos realizadas por cada algoritmo.
 
 **Análise**:
-- O **Gnome Sort** realizou disparadamente o maior número de trocas, confirmando sua baixa eficiência em termos de movimentação de dados.
-- O **Insert Sort** também apresentou um número elevado de trocas, ainda que inferior ao Gnome Sort.
-- **Quick Sort** e **Merge Sort** foram muito mais econômicos nas trocas, reforçando sua adequação para grandes volumes de dados.
-
----
+- Gnome Sort teve o maior número de trocas, com valores extremamente altos.
+- Insert Sort também apresentou muitas trocas, embora em menor escala.
+- Quick Sort e Merge Sort se destacaram com número de trocas muito reduzido, mostrando-se ideais para contextos com custo alto de movimentação de dados.
 
 ### Comparação do Número de Iterações
 
-![Número de Iterações](Gráficos/comparacao_iteracoes.png)
+![Número de Iterações](Graficos/comparacao_iteracoes.png)
 
-Este gráfico apresenta a média de iterações ou comparações feitas por cada algoritmo.
+Este gráfico apresenta a média de iterações (comparações) realizadas por cada algoritmo.
 
 **Análise**:
-- O **Gnome Sort** novamente lidera como o mais ineficiente, com um número de iterações que cresce rapidamente com o tamanho da entrada.
-- O **Insert Sort** também possui muitas iterações, mas ainda fica abaixo do Gnome Sort.
-- O **Merge Sort** mantém um número de iterações estável, enquanto o **Quick Sort** varia dependendo do tipo de dado, mas geralmente se mantém eficiente.
-
----
+- Gnome Sort novamente lidera como o mais ineficiente, com crescimento exagerado nas iterações.
+- Insert Sort também teve alta contagem de iterações.
+- Merge Sort manteve uma taxa estável e eficiente.
+- Quick Sort teve desempenho consistente, com variações de acordo com o tipo e a ordem dos dados, mas geralmente eficiente.
 
 ## Conclusão
 
-A partir da análise dos dados:
+A análise revelou diferenças significativas de desempenho entre os algoritmos:
 
-- **Quick Sort** demonstrou ser o algoritmo mais eficiente no geral, com baixo tempo de execução e número razoável de comparações e trocas.
-- **Merge Sort** teve desempenho estável e competitivo, principalmente em entradas maiores.
-- **Insert Sort** e **Gnome Sort** são adequados apenas para listas pequenas, sendo pouco escaláveis e altamente custosos em termos de trocas e tempo.
+- Quick Sort se destacou como o mais eficiente em tempo de execução, mantendo baixo número de trocas e iterações, sendo ideal para aplicações com grandes volumes de dados.
 
-Os experimentos demonstram que a escolha do algoritmo de ordenação deve ser orientada pelo tamanho da entrada e pelo custo computacional tolerável para a aplicação.
+- Merge Sort teve desempenho consistente e previsível, sendo uma boa alternativa, especialmente quando a estabilidade na ordenação é necessária.
+
+- Insert Sort e Gnome Sort mostraram-se ineficientes para grandes volumes, devido ao alto número de trocas e comparações. São úteis apenas em listas pequenas ou fins didáticos.
+
+Em resumo, para aplicações práticas, Quick Sort e Merge Sort são as melhores escolhas. A seleção do algoritmo deve considerar o tamanho dos dados, a necessidade de estabilidade e o custo de movimentação.
