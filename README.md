@@ -29,6 +29,15 @@ Para garantir uma análise justa e abrangente:
 - Os dados gerados foram salvos em um arquivo `resultados.csv`.
 - Um script em Python foi utilizado para processar esses dados e gerar os gráficos comparativos.
 
+## Resultados (Médias para vetor tamanho 1000)
+
+| Algoritmo   | Tempo Médio (ms) | Trocas Médias  | Iterações Médias |
+|-------------|------------------|---------------|------------------|
+| Insert Sort | 7                | 250.446       | 252.444          |
+| Quick Sort  | 0                | 5.439         | 12.307           |
+| Merge Sort  | 0                | 19.952        | 10.708           |
+| Gnome Sort  | 0                | 250.446       | 501.892          |
+
 ## Gráficos Gerados
 
 ### Comparação do Tempo de Execução
@@ -58,6 +67,8 @@ Este gráfico mostra a média de trocas de elementos realizadas por cada algorit
 ![Número de Iterações](Graficos/comparacao_iteracoes.png)
 
 Este gráfico apresenta a média de iterações (comparações) realizadas por cada algoritmo.
+
+
 
 **Análise**:
 - Gnome Sort novamente lidera como o mais ineficiente, com crescimento exagerado nas iterações.
